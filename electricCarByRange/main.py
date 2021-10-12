@@ -9,7 +9,15 @@ def getRange():
     crange = input("Enter minimum desired hours the car can drive before depletion: (i.e. 5)")
     return(crange)
 
-def createCSV():
+def createCSV(fileName,df3):
+    f = open(fileName, "x")
+    f.close()
+    i = 0
+    df3.to_csv(fileName, sep=",", index=False)
+
+    
+
+def search():
     column_name = ["make", "range(hr)"]
     df3 = pd.DataFrame(columns = column_name)
     
@@ -35,9 +43,16 @@ def createCSV():
         i += 1
         
 
+    fName = input("Enter output file name: ") + ".csv"
+    createCSV(fName,df3)
+  
     print("\n")
-    print(df3)
+
+    final = pd.read_csv(fName)
+
+    print(final)
+
+search()
 
 
-createCSV()
 
