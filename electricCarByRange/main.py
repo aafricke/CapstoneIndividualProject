@@ -18,7 +18,7 @@ def createCSV(fileName,df3):
     
 
 def search():
-    column_name = ["make", "range(hr)"]
+    column_name = ["make","model", "range(hr)"]
     df3 = pd.DataFrame(columns = column_name)
     
     df1 = pd.read_csv('cars.csv')
@@ -30,6 +30,7 @@ def search():
     i = 0
 
     dfMake = df1["Make"]
+    dfModel = df1["Model"]
     dfRange = df1["TIME (h)"]
     
     for row in dfMake:
@@ -38,7 +39,8 @@ def search():
         carRange = dfRange[i]
         
         if carMake == userMake and carRange == int(userRange):
-            df3.loc[i] = dfMake.loc[i]
+            df3.loc[i,"make"] = dfMake.loc[i]
+            df3.loc[i,"model"] = dfModel.loc[i]
             df3.loc[i,"range(hr)"] = dfRange.loc[i]
         i += 1
         
