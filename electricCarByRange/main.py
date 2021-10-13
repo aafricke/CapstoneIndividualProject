@@ -51,7 +51,9 @@ def search():
         carMake = dfMake[i]
         carRange = dfRange[i]
         
+
         if carMake == userMake and carRange >= int(userRange):
+
             df3.loc[i,"make"] = dfMake.loc[i]
             df3.loc[i,"model"] = dfModel.loc[i]
             df3.loc[i,"range(hr)"] = dfRange.loc[i]
